@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerCharacter : MonoBehaviour
 {
-
+ private AudioSource walking;
     private Vector3 lastMoveDir;
     private void Awake()
     {
-        
+       walking = GetComponent<AudioSource>(); 
     }
 
 
@@ -30,18 +30,22 @@ public class PlayerCharacter : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             moveY = +1f;
+            walking.Play();
         }
         if (Input.GetKey(KeyCode.S))
         {
             moveY = -1f;
+            walking.Play();
         }
         if (Input.GetKey(KeyCode.A))
         {
             moveX = -1f;
+            walking.Play();
         }
         if (Input.GetKey(KeyCode.D))
         {
             moveX = +1f;
+            walking.Play();
         }
 
         bool isIdle = moveX == 0f && moveY == 0f;
